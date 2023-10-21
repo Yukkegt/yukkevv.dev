@@ -14,5 +14,8 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.2",
     "astro": "^3.3.2"
+  },
+  "devDependencies": {
+    "sass": "^1.69.4"
   }
 }
