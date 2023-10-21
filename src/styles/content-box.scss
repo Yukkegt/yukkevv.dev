@@ -1,7 +1,10 @@
 .content-box {
     position: absolute;
-    right: random(100) + px;
+    top: 200px;
+    right: 400px;
     width: 500px;
-    height: 200px;
-    background-color: black;
+    height: 400px;
+    padding: 16px;
+    border: 1px red solid;
+    background-color: white;
 }
