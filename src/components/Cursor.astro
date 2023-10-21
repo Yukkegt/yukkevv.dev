@@ -1,0 +1,40 @@
+---
+
+---
+<div id="cursor">
+    <div id="cursor-shape"></div>
+</div>
+<script>
+    
+    const createCursor = () => {
+        const cursor = document.getElementById('cursor');  //カーソル用のdivを取得
+        //マウスに追従させる処理
+        document.addEventListener('mousemove', function (e) {
+                cursor.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+            });
+        
+        //aタグにホバー中かどうかの判別フラグ
+        let hovFlag = false;
+    
+        //aタグにホバーしたときに、ストーカーにクラスを追加
+        const linkElem = document.querySelectorAll('a');
+        for (let i = 0; i < linkElem.length; i++) {
+            //マウスホバー時
+            linkElem[i].addEventListener('mouseover', function (e) {
+                hovFlag = true;
+        		cursor.classList.add('hov_');
+            
+            });
+            //マウスホバー解除時
+            linkElem[i].addEventListener('mouseout', function (e) {
+                hovFlag = false;
+        		cursor.classList.remove('hov_');
+            
+           });
+        }
+    }
+    createCursor();
+
+    document.addEventListener('astro:after-swap', createCursor);
+
+</script>
