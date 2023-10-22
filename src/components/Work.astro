@@ -1,0 +1,22 @@
+---
+interface Props {
+	service_name:string;
+    category: string;
+    description: string;
+    image: string;
+	url: string;
+
+}
+
+const { service_name, category, description, image, url } = Astro.props;
+---
+
+<div class="work-item">
+    <div class="char">
+        <h3 class="service-name">{service_name}</h3>
+        <h4 class="category">{category}</h4>
+        <p class="description">{description}</p>    
+    </div>
+    <img class="img" src={image}>
+</div>
+

@@ -6,6 +6,10 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+h1,h2,h3,h4,h5{
+    margin: 0;
+}
+
 html, body{
     height: 100%;
     overflow-y: hidden;
@@ -37,7 +41,6 @@ li{
 }
 
 .title {
-    color: afafaf;
 }
 
 .title-name {
@@ -183,4 +186,49 @@ li{
     z-index: 4;
     left: 53px;
     top: 2px;
+}
+
+.account {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;    
+}
+
+
+.work-item {
+    display: flex;
+    margin-bottom: 48px;
+    justify-content: space-between;
+
+}
+
+.work-item .char {
+    width: 30%;
+}
+
+.work-item .img{
+    width: 70%;    
+    filter: blur(1px);
+    transition: filter 0.2s;
+}
+
+.work-item .img:hover{
+     
+    filter: blur(0px);
+}
+
+.work-item .service-name{
+    font-size: x-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+.work-item .category {
+    margin-bottom: 32px;
+}
+
+.work-item .description {
+    color: gray;
 }

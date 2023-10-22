@@ -8,9 +8,9 @@ interface Props {
 const { service_name, id, url } = Astro.props;
 ---
 
-<div>
+<div class="account">
     <h3>
       {service_name}
     </h3>
     <a href={url}>{id ?? url}</a>
- </div>
+</div>
