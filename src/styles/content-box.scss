@@ -1,10 +1,35 @@
 .content-box {
-    position: absolute;
-    top: 200px;
-    right: 400px;
-    width: 500px;
-    height: 400px;
+    position: fixed;
+    margin-top: calc(var(--pad)*4);
+    margin-right: calc(var(--pad)*2);
+    z-index: 20;   
+    top: 0;         
+    right: 0px;
+    width: 50%;
+    height: calc(100% - calc(var(--pad)*8));
     padding: 16px;
-    border: 1px red solid;
+    // border: 1px red solid;
     background-color: white;
+    transition: all .2s; /* Animation */
+    overflow-y: scroll;
+}
+
+.content-box::-webkit-scrollbar{
+    width: 1px;
+    height: 1px;
+}
+
+.content-box::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+.content-box::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #FF0000;
+}
+
+.content-box:hover {
+    // transform: scale(1.1);
+    // box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+
 }
