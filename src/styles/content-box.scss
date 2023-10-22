@@ -7,11 +7,12 @@
     right: 0px;
     width: 50%;
     height: calc(100% - calc(var(--pad)*8));
-    padding: 16px;
-    // border: 1px red solid;
+    padding: 32px;
+    border-left: 1px red solid;
     background-color: white;
     transition: all .2s; /* Animation */
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .content-box::-webkit-scrollbar{
