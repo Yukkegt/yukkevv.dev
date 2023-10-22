@@ -40,7 +40,8 @@ li{
 
 }
 
-.title {
+.title-id {
+    font-size: medium;
 }
 
 .title-name {
@@ -65,6 +66,7 @@ li{
 }
 
 .a-section {
+    margin-top: 32px;
 }
 
 .a-item {
