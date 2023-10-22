@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'RobotoMono';
+    src: url('/fonts/RobotoMono-Light.ttf') format('truetype'),
+         url('/fonts/RobotoMono-Medium.ttf') format('truetype');
+    font-weight: light, normal;
+    font-style: light, normal;
+    font-display: swap;
+  }         

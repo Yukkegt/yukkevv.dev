@@ -4,6 +4,7 @@
 import '../styles/yukkevv.css';
 import '../styles/animation.css';
 import '../styles/content-box.scss';
+import '../styles/font.css';
 
 import { ViewTransitions } from 'astro:transitions';
 
@@ -25,8 +26,8 @@ const { title, description } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/RobotoMono-Light.ttf" as="font" type="font/ttf" crossorigin="" />
+<link rel="preload" href="/fonts/RobotoMono-Medium.ttf" as="font" type="font/ttf" crossorigin="" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
