@@ -1,0 +1,16 @@
+---
+interface Props {
+	service_name:string
+    id?: string;    
+	url: string;
+}
+
+const { service_name, id, url } = Astro.props;
+---
+
+<div>
+    <h3>
+      {service_name}
+    </h3>
+    <a href={url}>{id ?? url}</a>
+ </div>

@@ -1,24 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SocialAccounts from '../components/SocialAccounts.astro';
 ---
 <Layout>
-  <div>
-    <h3>
-      Twitter
-    </h3>
-    <a href="https://twitter.com/yukkevv">@yukkevv</a>
-  </div>
-  <div>
-    <h3>
-      Blog
-    </h3>
-    <a href="https://yukkevv.hateblo.jp/">https://yukkevv.hateblo.jp/</a>
-  </div>
-  <div>
-    <h3>
-      GitHub
-    </h3>
-    <a href="https://github.com/Yukkegt">https://github.com/Yukkegt</a>
-  </div>
-
+  <SocialAccounts service_name='Twitter' url='https://twitter.com/yukkevv' id='@yukkevv' />
+  <SocialAccounts service_name='Blog' url='https://yukkevv.hateblo.jp/' />
+  <SocialAccounts service_name='GitHub' url='https://github.com/Yukkegt' />
 </Layout>
