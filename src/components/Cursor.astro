@@ -17,7 +17,7 @@
         let hovFlag = false;
     
         //aタグにホバーしたときに、ストーカーにクラスを追加
-        const linkElem = document.querySelectorAll('a');
+        const linkElem = document.querySelectorAll('a,input,label');
         for (let i = 0; i < linkElem.length; i++) {
             //マウスホバー時
             linkElem[i].addEventListener('mouseover', function (e) {
