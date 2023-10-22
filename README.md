@@ -10,7 +10,6 @@
 ├── public/
 ├── src/
 │   ├── components/
-│   ├── content/
 │   ├── layouts/
 │   └── pages/
 ├── astro.config.mjs
