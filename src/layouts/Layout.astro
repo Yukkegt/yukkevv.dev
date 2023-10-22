@@ -11,33 +11,29 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<div id="cursor">
-			<div id="cursor-shape"></div>
-		</div>
 		<main>
-			<div class="box">
-			<div class="content">
-				<div class="header">
-					<div class="title">
-						<h1 class="title-name">Mutsuki Sota</h1>
-						<p class="title-site">portfolio site</p>
-						</div>
-						
-						<div class="a-section">
-							<a class="a-item" href="/Works">Work</a>
-							<a class="a-item" href="/About">About</a>
-							<a class="a-item" href="/Info">Info</a>
-						</div>
-						
-						
-				</div>
 
-                <div class="content-box bounceInUp">
-                    <slot/>
-                </div>
-					
-					<h2 class="job-name">Developer & Engineer</h2>
-					
+			<div class="box">
+				<div class="content">
+					<div class="header">
+						<div class="title">
+							<h1 class="title-name">Mutsuki Sota</h1>
+							<p class="title-site">portfolio site</p>
+						</div>
+						<h2 class="job-name">Developer & Engineer</h2>
+					</div>
+
+					<div class="a-section">
+						<a class="a-item" href="/Works">Work</a>
+						<a class="a-item" href="/About">About</a>
+						<a class="a-item" href="/Info">Info</a>
+					</div>
+
+                	<div class="content-box ">
+                	    <slot/>
+                	</div>
+
+
 					<div class="lang-toggle">
 						<input id="toggle" class="toggle-input" type='checkbox' />
 						<label for="toggle" class="toggle-label">
