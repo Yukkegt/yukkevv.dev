@@ -9,9 +9,9 @@
     height: calc(100% - calc(var(--pad)*8));
     padding: 32px;
     border-left: 1px red solid;
-    background-color: white;
+    // background-color: white;
     transition: all .2s; /* Animation */
-    overflow-y: scroll;
+    overflow-y: visible;
     overflow-x: hidden;
 }
 
