@@ -1,9 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 interface Props {
 	service_name:string;
     category: string;
     description: string;
-    image: string;
+    image: ImageMetadata;
 	url: string;
 
 }
@@ -17,6 +18,6 @@ const { service_name, category, description, image, url } = Astro.props;
         <h4 class="category">{category}</h4>
         <p class="description">{description}</p>    
     </div>
-    <img class="img" src={image}>
+    <Image class={"img"} src={image} alt={"Mutsukiのポートフォリオサイトの画像"} />
 </div>
 

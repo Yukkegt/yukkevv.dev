@@ -218,6 +218,7 @@ li{
 
 .work-item .img{
     width: 70%;    
+    height: auto;
     filter: blur(1px);
     transition: filter 0.2s;
 }
