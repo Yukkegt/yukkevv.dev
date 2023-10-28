@@ -1,6 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Cursor from '../components/Cursor.astro';
+import LoadingSplash from '../components/LoadingSplash.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 ---
@@ -11,6 +12,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<LoadingSplash />
 		<main>
 
 			<div class="box">
