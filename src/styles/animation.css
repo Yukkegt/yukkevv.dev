@@ -28,3 +28,13 @@
         transform: translateZ(0)
     }
 }
+
+@keyframes fadeOut {
+    from {
+      opacity: 1; /* 初期状態（完全に表示） */
+    }
+    to {
+      opacity: 0; /* フェードアウト状態（完全に非表示） */
+      display: none;
+    }
+  }
