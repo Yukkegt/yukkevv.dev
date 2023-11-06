@@ -9,8 +9,8 @@ const { service_name, id, url } = Astro.props;
 ---
 
 <div class="account">
-    <h3>
+    <h3 class="font-size-m">
       {service_name}
     </h3>
-    <a href={url}>{id ?? url}</a>
+    <a class="font-size-m" href={url}>{id ?? url}</a>
 </div>

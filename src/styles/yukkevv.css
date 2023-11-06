@@ -15,6 +15,7 @@ html, body{
     height: 100%;
     overflow-y: hidden;
     margin: 0;
+    font-size: 62.5%;
 }
 
 html,body,a,div{
@@ -27,6 +28,22 @@ ul{
 
 li{
     list-style-type:none;
+}
+
+.font-size-s {
+    font-size: clamp(0.8rem, calc(0.6rem + 0.625vw), 1.3rem);
+}
+
+.font-size-m {
+    font-size: clamp(1.3rem, calc(0.9rem + 0.625vw), 1.6rem);
+}
+
+.font-size-l {
+    font-size: clamp(2.8rem, calc(2.4rem + 0.625vw), 3.2rem);
+}
+
+.font-size-xl {
+    font-size: clamp(3.8rem, calc(3.6rem + 0.625vw), 6.4rem);
 }
 
 .header {
@@ -43,18 +60,18 @@ li{
 }
 
 .title-id {
-    font-size: medium;
+    /* font-size: medium; */
 }
 
 .title-name {
-    line-height: 0.75em;
-    font-size: 64px;
+    /* line-height: 0.75em; */
+    /* font-size: 64px; */
     
 }
 
 .title-site {
     margin-top: 0;
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 
 .job-name {
@@ -62,19 +79,32 @@ li{
     /* position: absolute; */
     right: calc(var(--pad)*2);
     top: calc(var(--pad)*2);          
-    font-size: 32px;
+    /* font-size: 32px; */
     font-weight: lighter;
+}
+
+@media screen and (max-width:768px) {
+    .job-name {
+        display: none;
+    }
 }
 
 .a-section {
     margin-top: 32px;
 }
 
+@media screen and (max-width:768px) {
+    .a-section {
+        display: flex;
+        gap: 8px;
+    }
+}
+
 .a-item {
     width: max-content;
     color: black;
     display: flex;
-    font-size: 36px;
+    /* font-size: 32px; */
     font-weight: 300;
     text-decoration: underline 1px solid ;
     transition-property: background-color;
@@ -175,6 +205,7 @@ li{
 }
 
 .toggle-label{
+    font-size: 15px;
     width: 80px;
     height: 32px;
     background: #fff;
@@ -257,8 +288,7 @@ li{
 }
 
 .work-item .service-name{
-    font-size: x-large;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-size: 16px; */
     margin-bottom: 4px;
     color: #000;
 }

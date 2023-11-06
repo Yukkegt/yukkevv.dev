@@ -14,9 +14,9 @@ const { service_name, category, description, image, url } = Astro.props;
 
 <div class="work-item">
     <div class="char">
-        <h3 class="service-name">{service_name}</h3>
-        <h4 class="category">{category}</h4>
-        <p class="description">{description}</p>    
+        <h3 class="service-name font-size-m">{service_name}</h3>
+        <h4 class="category font-size-m">{category}</h4>
+        <p class="description font-size-s">{description}</p>    
     </div>
     <Image class={"img"} src={image} alt={"Mutsukiのポートフォリオサイトの画像"} />
 </div>

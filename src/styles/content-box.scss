@@ -15,6 +15,19 @@
     overflow-x: hidden;
 }
 
+@media screen and (max-width:768px)
+{
+    .content-box {
+        border-left: 0px;
+        border-top: 1px red solid;
+        position: static;
+        width: calc(100% - calc(var(--pad)*4));
+        height: calc(100% - calc(var(--pad)*20));
+        margin-top: 32px;
+        margin-right: 0;
+    }
+}
+
 .content-box::-webkit-scrollbar{
     width: 1px;
     height: 1px;
