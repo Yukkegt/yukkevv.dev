@@ -11,7 +11,9 @@
 ├── src/
 │   ├── components/
 │   ├── layouts/
-│   └── pages/
+│   ├── pages/
+│   ├── script/
+│   └── styles/
 ├── astro.config.mjs
 ├── README.md
 ├── package.json
@@ -19,5 +21,5 @@
 ```
 
 ## デプロイ予定
-もろもろ調整してどっかにデプロイします。
-2023.11.6までに
+[2023.11.7 CloudFrontへデプロイ](https://d5dduskphrrks.cloudfront.net/)
+ドメイン未取得の為、取得出来次第ドメインを変更する。->目安 11/10
