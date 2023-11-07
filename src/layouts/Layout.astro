@@ -14,7 +14,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<LoadingSplash />
 		<main>
-
+			
 			<div class="box">
 				<div class="content">
 					<div class="header">
@@ -24,18 +24,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						</div>
 						<h2 class="job-name font-size-l">Developer & Engineer</h2>
 					</div>
-
+					
 					<div class="a-section">
 						<a class="a-item font-size-l" href="/Works">Work</a>
 						<a class="a-item font-size-l" href="/About">About</a>
 						<a class="a-item font-size-l" href="/Info">Info</a>
 					</div>
-
+					
                 	<div class="content-box ">
-                	    <slot/>
+						<slot/>
                 	</div>
-
-
+					
+					
 					<div class="lang-toggle">
 						<input id="toggle" class="toggle-input" type='checkbox' />
 						<label for="toggle" class="toggle-label">
@@ -49,8 +49,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			
 			
 		</main>
-        <Cursor/>
+		<Cursor/>
 		<script src="../script/splash-display.ts"></script>
-		<script src="../script/isSmartPhone.ts"></script>
 	</body>
-</html>
+	</html>
+	

@@ -1,5 +1,4 @@
 ---
-
 ---
 <div id="cursor">
     <div id="cursor-shape"></div>
@@ -12,7 +11,7 @@
         document.addEventListener('mousemove', function (e) {
             cursor.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
         });
-                
+
         let isHover = false;
         
         // a, input, labelホバー時に表示を変更
@@ -32,6 +31,16 @@
             });
         }
     }
+
+    function isSmartPhone() {
+        // スマホ判定
+        if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+          return true;
+        } else {
+          return false;
+        }
+    }
+
     isSmartPhone() ? null : createCursor();
     // createCursor();
     document.addEventListener('astro:after-swap', createCursor);
