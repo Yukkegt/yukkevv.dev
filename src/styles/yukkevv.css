@@ -302,3 +302,10 @@ li{
 .work-item .description {
     color: gray;
 }
+
+.icon {
+    border: #f8f8f8 1px solid;
+    border-radius: 100%;
+    width: clamp(3rem, calc(4rem + 2vw), 8.2rem);
+    height: clamp(3rem, calc(4rem + 2vw), 8.2rem);
+}

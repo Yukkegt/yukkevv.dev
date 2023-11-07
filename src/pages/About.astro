@@ -1,8 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+
+import Mutsuki_Icon from '../images/20211009-trim.jpg';
 ---
 <Layout>
   <div class="font-size-m">
+    <Image class="icon" src={Mutsuki_Icon} alt="Mutsuki icon"></Image>
     <h3>Mutsuki(yukkevv)</h3>
     <p>I'm developer in Fukuoka city.</p>
     <p>I work with a wide range of technologies, including back-end, front-end, and cloud.</p>
