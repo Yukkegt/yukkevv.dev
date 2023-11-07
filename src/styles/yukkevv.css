@@ -145,7 +145,7 @@ li{
   animation-name: fadeOut;
   animation-duration: 0.5s; 
   animation-timing-function: ease-out; 
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 
 }
@@ -278,13 +278,10 @@ li{
 .work-item .img{
     width: 70%;    
     height: auto;
-    filter: blur(1px);
-    transition: filter 0.2s;
 }
 
 .work-item .img:hover{
      
-    filter: blur(0px);
 }
 
 .work-item .service-name{
