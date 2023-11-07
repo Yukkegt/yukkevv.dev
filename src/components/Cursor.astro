@@ -6,35 +6,34 @@
 </div>
 <script>
     
-    const createCursor = () => {
-        const cursor = document.getElementById('cursor');  //カーソル用のdivを取得
-        //マウスに追従させる処理
+    const createCursor = () => {        
+        const cursor = document.getElementById('cursor');  // カーソル要素を取得
+        // マウスに追従させる処理
         document.addEventListener('mousemove', function (e) {
-                cursor.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
-            });
+            cursor.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+        });
+                
+        let isHover = false;
         
-        //aタグにホバー中かどうかの判別フラグ
-        let hovFlag = false;
-    
-        //aタグにホバーしたときに、ストーカーにクラスを追加
+        // a, input, labelホバー時に表示を変更
         const linkElem = document.querySelectorAll('a,input,label');
         for (let i = 0; i < linkElem.length; i++) {
-            //マウスホバー時
+            // hover:mouse over
             linkElem[i].addEventListener('mouseover', function (e) {
-                hovFlag = true;
+                isHover = true;
         		cursor.classList.add('hov_');
-            
+                
             });
-            //マウスホバー解除時
+            // hover:mouse out
             linkElem[i].addEventListener('mouseout', function (e) {
-                hovFlag = false;
+                isHover = false;
         		cursor.classList.remove('hov_');
-            
-           });
+                
+            });
         }
     }
-    createCursor();
-
+    isSmartPhone() ? null : createCursor();
+    // createCursor();
     document.addEventListener('astro:after-swap', createCursor);
-
+    
 </script>
