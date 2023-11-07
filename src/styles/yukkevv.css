@@ -277,21 +277,26 @@ li{
 
 .work-item .img{
     width: 70%;    
-    height: min-content;
+    height: min-content;    
+    border: #f8f8f8 1px solid;
+    filter: invert(1%) grayscale(100%);
+    transition-property: all;
+    transition-duration: .5s;
 }
 
 .work-item .img:hover{
-     
+    border: #f8f8f8 1px solid;
+    filter: none;
+    transform: scale(1.1);
+
 }
 
 .work-item .service-name{
     /* font-size: 16px; */
-    margin-bottom: 4px;
     color: #000;
 }
 
 .work-item .category {
-    margin-bottom: 32px;
 }
 
 .work-item .description {
