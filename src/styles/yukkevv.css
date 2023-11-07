@@ -277,7 +277,7 @@ li{
 
 .work-item .img{
     width: 70%;    
-    height: auto;
+    height: min-content;
 }
 
 .work-item .img:hover{
