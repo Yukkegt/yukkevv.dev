@@ -1,5 +1,5 @@
 :root {
-    --pad: max(16px, 4vmin);
+    --pad: max(16px, 3vmin);
 }
 
 *{

@@ -1,4 +1,4 @@
-# Mutsuki Sota's Portfolio.
+# Mutsuki Portfolio.
 
 2023/10/21~作成中
 
