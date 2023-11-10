@@ -9,8 +9,7 @@
     height: calc(100% - calc(var(--pad)*8));
     padding: 32px;
     border-left: 1px red solid;
-    // background-color: white;
-    transition: all .2s; /* Animation */
+    transition: all .2s;
     overflow-y: visible;
     overflow-x: hidden;
 }
@@ -40,10 +39,4 @@
 .content-box::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background: #FF0000;
-}
-
-.content-box:hover {
-    // transform: scale(1.1);
-    // box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
-
 }

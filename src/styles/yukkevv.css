@@ -47,7 +47,6 @@ html, body{
         
     top: calc(0%);
     left: calc(0%);
-    /* background-color: #ff0000; */
     border-top: 8px solid;
     border-left: 8px solid;
     border-color: rgb(255, 0, 0);
@@ -112,13 +111,6 @@ li{
     height: 100%;
     
 
-}
-
-.title-id {
-}
-
-.title-name {
-    
 }
 
 .title-site {
@@ -338,11 +330,7 @@ li{
 }
 
 .work-item .service-name{
-    /* font-size: 16px; */
     color: #000;
-}
-
-.work-item .category {
 }
 
 .work-item .description {
