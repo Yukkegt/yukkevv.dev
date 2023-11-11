@@ -1,9 +1,12 @@
 # Mutsuki Portfolio.
 <img alt="Demo" src="./src/images/Mutsuki_Portfolio.png" />
 
+## URL
+Mutsuki Portfolio (https://yukkevv.dev/)
+
 ## Project Structure
 
-このサイトはAstroにより作成されています。
+このサイトはAstroを使用して作成されています。
 
 ```text
 ├── public/
@@ -18,7 +21,3 @@
 ├── package.json
 └── tsconfig.json
 ```
-
-## デプロイ予定
-[2023.11.7 CloudFrontへデプロイ](https://d5dduskphrrks.cloudfront.net/)
-ドメイン未取得の為、取得出来次第ドメインを変更する。->目安 11/10
