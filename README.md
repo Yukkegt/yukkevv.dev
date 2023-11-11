@@ -1,5 +1,5 @@
 # Mutsuki Portfolio.
-![](.\src\images\Mutsuki_Portfolio.png)
+<img alt="Demo" src="./src/images/Mutsuki_Portfolio.png" />
 
 ## Project Structure
 
