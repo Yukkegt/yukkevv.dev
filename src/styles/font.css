@@ -15,4 +15,15 @@
    font-weight: normal, light,;
    font-style: light, normal;
    font-display: swap;
-}         
+}
+
+@font-face {
+     font-family: 'Noto Sans JP';
+     src: 
+     url('/fonts/NotoSansJP-Bold.ttf') format('ttf'),
+     url('/fonts/NotoSansJP-Medium.ttf') format('ttf'),
+     url('/fonts/NotoSansJP-Regular.ttf') format('ttf');
+font-weight: bold, normal, medium;
+font-style: bold, normal, medium;
+font-display: swap;
+}
