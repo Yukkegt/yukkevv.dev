@@ -1,8 +1,29 @@
 @font-face {
-    font-family: 'RobotoMono';
+    font-family: 'Roboto Mono';
     src: url('/fonts/RobotoMono-Light.ttf') format('truetype'),
          url('/fonts/RobotoMono-Medium.ttf') format('truetype');
     font-weight: light, normal;
     font-style: light, normal;
     font-display: swap;
-  }         
+}         
+
+@font-face {
+   font-family: 'LINE Seed JP';
+   src: 
+   url('/fonts/LINESeedJP_OTF_Th.woff2') format('woff2'),
+        url('/fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');
+   font-weight: normal, light,;
+   font-style: light, normal;
+   font-display: swap;
+}
+
+@font-face {
+     font-family: 'Noto Sans JP';
+     src: 
+     url('/fonts/NotoSansJP-Bold.ttf') format('ttf'),
+     url('/fonts/NotoSansJP-Medium.ttf') format('ttf'),
+     url('/fonts/NotoSansJP-Regular.ttf') format('ttf');
+font-weight: bold, normal, medium;
+font-style: bold, normal, medium;
+font-display: swap;
+}

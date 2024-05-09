@@ -1,0 +1,51 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Cursor from '../components/Cursor.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import '../styles/blog-markdown.css';
+const {frontmatter} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<main>
+			<div class="background-effect-blog">
+				<div class="background-blur"></div>
+			</div>
+			<div class="box blog-box" transition:name="box">
+				<div class="content">					
+					<div class="a-section flex gap-8 font-size-m" transition:name="a-section">
+						<a class="a-item" href="/Works">Work</a>
+						<a class="a-item" href="/About">About</a>
+						<a class="a-item" href="/Info">Info</a>
+						<a class="a-item" href="/Blog">Blog</a>
+					</div>
+
+					<h1 class="font-size-l">{frontmatter.title}</h1>
+					<div class="blog-data">
+						<div class="blod-date">
+							{frontmatter.pubDate}
+						</div>
+						<div class="tags">
+							{frontmatter.tags.map((tag) => 
+								<div class="font-size-s">
+									#{tag}
+								</div>)
+							}
+						</div>
+
+					</div>
+					<div class="blog-layout markdown font-size-m">
+						<slot/>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Cursor/>
+	</body>
+	</html>
+	

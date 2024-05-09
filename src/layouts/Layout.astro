@@ -1,7 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Cursor from '../components/Cursor.astro';
-import LoadingSplash from '../components/LoadingSplash.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 ---
@@ -12,13 +11,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<LoadingSplash />
 		<main>
-			<div class="background-effect">
-				<div class="background-blur"></div>
-			</div>
+			<div class="background-effect"></div>
 
-			<div class="box">
+			<div class="box" transition:name="box">
 				<div class="content">
 					<div class="header">
 						<div class="title">
@@ -28,13 +24,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						<h2 class="job-name font-size-l">Developer & Engineer</h2>
 					</div>
 					
-					<div class="a-section">
+					<div class="a-section" transition:name="a-section">
 						<a class="a-item font-size-l" href="/Works">Work</a>
 						<a class="a-item font-size-l" href="/About">About</a>
 						<a class="a-item font-size-l" href="/Info">Info</a>
+						<a class="a-item font-size-l" href="/Blog">Blog</a>
 					</div>
 					
-                	<div class="content-box ">
+                	<div class="content-box " transition:animate="slide">
 						<slot/>
                 	</div>
 					
@@ -53,7 +50,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			
 		</main>
 		<Cursor/>
-		<script src="../script/splash-display.ts"></script>
 	</body>
-	</html>
+</html>
 	
