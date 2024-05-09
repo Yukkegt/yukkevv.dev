@@ -4,10 +4,8 @@ import Layout from '../layouts/Layout.astro';
 const allPosts = await getCollection('blog');
 
 ---
-
 <Layout>
   <ul class="font-size-m">
-
     {allPosts.map((post) => 
       <li class="blog-item">
         <time class="font-size-s" datetime={post.data.pubDate.toDateString()}>				  
