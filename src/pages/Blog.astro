@@ -17,7 +17,7 @@ const comments = await db.select().from(Comment);
         <time class="font-size-s" datetime={data.published.toDateString()}>				  
           {new Intl.DateTimeFormat('ja-JP').format(data.published)}
         </time>
-        <a class="a-item" href={"Blog/"+data.id}>{data.title}</a>
+        <a class="a-item" href={"/"+data.id}>{data.title}</a>
       </li>)
     }
   </ul>
