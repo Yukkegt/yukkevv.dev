@@ -3,7 +3,9 @@ import BaseHead from '../components/BaseHead.astro';
 import Cursor from '../components/Cursor.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '../styles/blog-markdown.css';
-const {frontmatter} = Astro.props;
+// const {frontmatter} = Astro.props;
+
+const { title, published, tags } = Astro.props
 ---
 
 <!doctype html>
@@ -25,15 +27,15 @@ const {frontmatter} = Astro.props;
 						<a class="a-item" href="/Blog">Blog</a>
 					</div>
 
-					<h1 class="font-size-l">{frontmatter.title}</h1>
+					<h1 class="font-size-l">{title}</h1>
 					<div class="blog-data">
 						<div class="blod-date">
-							{frontmatter.pubDate}
+							{published.toLocaleDateString()}
 						</div>
 						<div class="tags">
-							{frontmatter.tags.map((tag) => 
+							{tags.map((tag) => 
 								<div class="font-size-s">
-									#{tag}
+									#{tag.name}
 								</div>)
 							}
 						</div>

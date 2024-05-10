@@ -1,11 +1,15 @@
 ---
+import { db, Work as WorkData } from 'astro:db';
 import Layout from '../layouts/Layout.astro';
 import Work from '../components/Work.astro';
 
 import Mutsuki_Portfolio from '../images/Mutsuki_Portfolio.png';
+const works = await db.select().from(WorkData);
 
 ---
 
 <Layout>
-  <Work service_name='Mutsuki Portfolio Site' description='私のポートフォリオサイトです。' image={Mutsuki_Portfolio} image_alt='Mutsukiのポートフォリオサイトの画像' category='PORTFOLIO' url='https://yukke.dev' />
+  {works.map(({ title, categoryName, description, imageUrl, imageAlt, url }) => 
+    <Work service_name={title} description={description} image={Mutsuki_Portfolio} image_alt={imageAlt} category={categoryName} url={url} />
+  )}
 </Layout>

@@ -1,17 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+// import { getCollection } from 'astro:content';
+import { db, Comment, Article, Work, eq } from 'astro:db';
 import Layout from '../layouts/Layout.astro';
-const allPosts = await getCollection('blog');
+import { ArticleTag } from 'astro:db';
+// const allPosts = await getCollection('blog');
+
+const articleData = await db.select().from(Article);
+const works = await db.select().from(Work);
+const comments = await db.select().from(Comment);
 
 ---
 <Layout>
   <ul class="font-size-m">
-    {allPosts.map((post) => 
+    {articleData.map((data) => 
       <li class="blog-item">
-        <time class="font-size-s" datetime={post.data.pubDate.toDateString()}>				  
-          {new Intl.DateTimeFormat('ja-JP').format(post.data.pubDate)}
+        <time class="font-size-s" datetime={data.published.toDateString()}>				  
+          {new Intl.DateTimeFormat('ja-JP').format(data.published)}
         </time>
-        <a class="a-item" href={"Blog/"+post.slug}>{post.data.title}</a>
+        <a class="a-item" href={"Blog/"+data.id}>{data.title}</a>
       </li>)
     }
   </ul>

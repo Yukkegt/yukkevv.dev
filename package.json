@@ -5,15 +5,18 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build --remote",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^10.2.5",
+    "@astrojs/db": "^0.11.1",
     "@astrojs/mdx": "^3.0.0",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.4",
     "astro": "^4.8.0",
+    "marked": "^12.0.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {

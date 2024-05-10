@@ -1,0 +1,26 @@
+---
+import { eq } from 'astro:db';
+import { db, Article } from 'astro:db';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { ArticleTag } from 'astro:db';
+import { Tag } from 'astro:db';
+import { marked } from 'marked';
+
+const { id } = Astro.params;
+const articleWithTags = await db.select()
+  .from(Article)
+  .leftJoin(ArticleTag, eq(ArticleTag.articleId, Article.id))
+  .leftJoin(Tag, eq(ArticleTag.tagId, Tag.id))
+  .where(eq(Article.id, Number(id)))
+  .all();
+
+// タグの配列を作成
+let tags = articleWithTags.map(item => item.Tag).filter(tag => tag);
+
+const content = marked.parse(articleWithTags[0]?.Article.content);
+
+---
+
+<BlogLayout title={articleWithTags[0]?.Article.title} published={articleWithTags[0]?.Article.published} tags={tags}>
+  <article set:html={content} />
+</BlogLayout>
