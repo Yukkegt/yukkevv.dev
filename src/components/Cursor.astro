@@ -4,30 +4,37 @@
     <div id="cursor-shape"></div>
 </div>
 <script>
-    
-    const createCursor = () => {        
+    // カーソルの現在位置を保持
+    let cursorX = 0;
+    let cursorY = 0;
+
+    const createCursor = () => {
         const cursor = document.getElementById('cursor');  // カーソル要素を取得
+
+        // 保持していた位置にカーソルを配置（ページ遷移後も維持）
+        if (cursorX !== 0 || cursorY !== 0) {
+            cursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px)';
+        }
+
         // マウスに追従させる処理
         document.addEventListener('mousemove', function (e) {
-            cursor.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+            cursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px)';
         });
 
-        let isHover = false;
-        
         // a, input, labelホバー時に表示を変更
         const linkElem = document.querySelectorAll('a,input,label');
         for (let i = 0; i < linkElem.length; i++) {
             // hover:mouse over
-            linkElem[i].addEventListener('mouseover', function (e) {
-                isHover = true;
+            linkElem[i].addEventListener('mouseover', function () {
         		cursor.classList.add('hov_');
-                
+
             });
             // hover:mouse out
-            linkElem[i].addEventListener('mouseout', function (e) {
-                isHover = false;
+            linkElem[i].addEventListener('mouseout', function () {
         		cursor.classList.remove('hov_');
-                
+
             });
         }
     }
@@ -44,5 +51,5 @@
     isSmartPhone() ? null : createCursor();
     // createCursor();
     document.addEventListener('astro:after-swap', createCursor);
-    
+
 </script>

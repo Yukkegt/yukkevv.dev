@@ -1,24 +1,283 @@
 ---
 // import { getCollection } from 'astro:content';
-import { db, Comment, Article, Work, eq } from 'astro:db';
+import { db, Article, eq } from 'astro:db';
 import Layout from '../layouts/Layout.astro';
-import { ArticleTag } from 'astro:db';
+import { ArticleTag, Tag } from 'astro:db';
 // const allPosts = await getCollection('blog');
 
-const articleData = await db.select().from(Article);
-const works = await db.select().from(Work);
-const comments = await db.select().from(Comment);
+// 記事とタグを取得
+const articleData = await db.select().from(Article).orderBy(Article.published, 'desc');
+
+// 全てのタグを取得
+const allTags = await db.select().from(Tag).all();
+
+// 各記事のタグを取得
+const articlesWithTags = await Promise.all(
+  articleData.map(async (article) => {
+    const tags = await db
+      .select()
+      .from(ArticleTag)
+      .leftJoin(Tag, eq(ArticleTag.tagId, Tag.id))
+      .where(eq(ArticleTag.articleId, article.id))
+      .all();
+
+    return {
+      ...article,
+      tags: tags.map(t => t.Tag).filter(Boolean)
+    };
+  })
+);
+
+// プレビューテキストを生成する関数
+function getPreviewText(content: string, maxLength: number = 150): string {
+  const plainText = content.replace(/[#*_`\[\]]/g, '').replace(/\n+/g, ' ').trim();
+  return plainText.length > maxLength
+    ? plainText.substring(0, maxLength) + '...'
+    : plainText;
+}
 
 ---
 <Layout>
-  <ul class="font-size-m">
-    {articleData.map((data) => 
-      <li class="blog-item">
-        <time class="font-size-s" datetime={data.published.toDateString()}>				  
-          {new Intl.DateTimeFormat('ja-JP').format(data.published)}
-        </time>
-        <a class="a-item" href={"/"+data.id}>{data.title}</a>
-      </li>)
-    }
-  </ul>
+  <div class="blog-controls">
+    <div class="tag-filter">
+      <button class="filter-tag active font-size-s" data-tag="all">すべて</button>
+      {allTags.map((tag) => (
+        <button class="filter-tag font-size-s" data-tag={tag.id}>{tag.name}</button>
+      ))}
+    </div>
+    <select class="sort-select font-size-s" id="sortSelect">
+      <option value="date-desc">新しい順</option>
+      <option value="date-asc">古い順</option>
+    </select>
+  </div>
+
+  <div class="blog-list" id="blogList">
+    {articlesWithTags.map((article) =>
+      <article class="blog-list-item" data-tags={JSON.stringify(article.tags.map(t => t.id))} data-date={article.published.getTime()}>
+        <a class="blog-list-link" href={"Blog/"+article.id}>
+          <div class="blog-list-header">
+            <h2 class="blog-list-title font-size-l">{article.title}</h2>
+            <time class="blog-list-date font-size-s" datetime={article.published.toDateString()}>
+              {new Intl.DateTimeFormat('ja-JP').format(article.published)}
+            </time>
+          </div>
+          <p class="blog-list-preview font-size-m">{getPreviewText(article.content)}</p>
+          {article.tags && article.tags.length > 0 && (
+            <div class="blog-list-tags">
+              {article.tags.map((tag) => (
+                <span class="blog-tag font-size-s">#{tag.name}</span>
+              ))}
+            </div>
+          )}
+        </a>
+      </article>
+    )}
+  </div>
 </Layout>
+
+<script>
+  // タグフィルタリング機能
+  const filterButtons = document.querySelectorAll('.filter-tag');
+  const blogItems = document.querySelectorAll('.blog-list-item');
+  const sortSelect = document.getElementById('sortSelect') as HTMLSelectElement;
+
+  let currentFilter = 'all';
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      currentFilter = button.getAttribute('data-tag') || 'all';
+
+      // アクティブボタンの切り替え
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      applyFilters();
+    });
+  });
+
+  sortSelect?.addEventListener('change', () => {
+    applyFilters();
+  });
+
+  function applyFilters() {
+    const items = Array.from(blogItems);
+
+    // フィルタリング
+    items.forEach((item: Element) => {
+      const htmlItem = item as HTMLElement;
+      const tags = JSON.parse(htmlItem.getAttribute('data-tags') || '[]');
+
+      if (currentFilter === 'all' || tags.includes(Number(currentFilter))) {
+        htmlItem.style.display = 'block';
+      } else {
+        htmlItem.style.display = 'none';
+      }
+    });
+
+    // ソート
+    const visibleItems = items.filter((item: Element) => {
+      const htmlItem = item as HTMLElement;
+      return htmlItem.style.display !== 'none';
+    });
+
+    const sortValue = sortSelect?.value || 'date-desc';
+
+    visibleItems.sort((a, b) => {
+      const aDate = Number((a as HTMLElement).getAttribute('data-date'));
+      const bDate = Number((b as HTMLElement).getAttribute('data-date'));
+
+      if (sortValue === 'date-desc') {
+        return bDate - aDate;
+      } else {
+        return aDate - bDate;
+      }
+    });
+
+    // 並び替えを適用
+    const blogList = document.getElementById('blogList');
+    visibleItems.forEach(item => {
+      blogList?.appendChild(item);
+    });
+  }
+</script>
+
+<style>
+  .blog-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .filter-tag {
+    padding: 6px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .filter-tag:hover {
+    background-color: rgba(255, 123, 79, 0.2);
+    border-color: rgba(255, 123, 79, 0.5);
+  }
+
+  .filter-tag.active {
+    background-color: rgba(255, 123, 79, 0.9);
+    border-color: rgba(255, 123, 79, 1);
+    color: white;
+  }
+
+  .sort-select {
+    padding: 8px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .sort-select:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .blog-list-item {
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .blog-list-item:hover {
+    border-color: rgba(255, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .blog-list-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .blog-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .blog-list-title {
+    margin: 0;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .blog-list-date {
+    color: #666;
+    white-space: nowrap;
+  }
+
+  .blog-list-preview {
+    margin: 0 0 12px 0;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .blog-list-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .blog-tag {
+    padding: 4px 12px;
+    background-color: rgba(255, 123, 79, 0.15);
+    border-radius: 12px;
+    color: #d63301;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .blog-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .tag-filter {
+      justify-content: center;
+    }
+
+    .blog-list-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .blog-list-item {
+      padding: 16px;
+    }
+  }
+</style>

@@ -1,7 +1,10 @@
 ---
+// SSRモードを有効化（hybrid出力モード時に動的ルートを許可）
+export const prerender = false;
+
 import { eq } from 'astro:db';
 import { db, Article } from 'astro:db';
-import BlogLayout from '../layouts/BlogLayout.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 import { ArticleTag } from 'astro:db';
 import { Tag } from 'astro:db';
 import { marked } from 'marked';

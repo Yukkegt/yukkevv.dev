@@ -1,13 +1,5 @@
 import { defineDb, defineTable, column, NOW } from 'astro:db';
 
-//Comment テスト用に作成したテーブル　消す
-const Comment = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    body: column.text(),
-  }
-})
-
 // 作品(Worksに表示するもの)
 const Work = defineTable({
   columns: {
@@ -111,5 +103,5 @@ const UserSkill = defineTable({
 
 // ここでexportを行うことで、実際にデータベースにテーブルが作成される。
 export default defineDb({
-  tables: { Comment, Work, Article, Tag, ArticleTag, Link, User, SkillCategory, Skill, UserSkill }
+  tables: { Work, Article, Tag, ArticleTag, Link, User, SkillCategory, Skill, UserSkill }
 });

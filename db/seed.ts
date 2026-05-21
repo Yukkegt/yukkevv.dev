@@ -1,4 +1,4 @@
-import { db, Comment, Work, Article, Tag, ArticleTag, Link, User, SkillCategory, Skill, UserSkill } from 'astro:db';
+import { db, Work, Article, Tag, ArticleTag, Link, User, SkillCategory, Skill, UserSkill } from 'astro:db';
 
 export default async function () {
 	await db.insert(Link).values([
